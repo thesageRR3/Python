@@ -2,8 +2,6 @@ print("I'm thinking of a number between 1 and 10")
 print("Can you guess what the number is?")
 guess = int(input("Please enter your guess: "))
 
-counter = 0
-
 def am_I_right(guess):
     if guess == 3:
         print("CONGRATULATIONS! How did you know?")
@@ -19,12 +17,15 @@ def am_I_right(guess):
 
 am_I_right(guess)
 
+counter = 0
+
 while guess != 3:
     counter = counter +1
     if counter == 1:
         print(f"You have taken {counter} guess so far!")
     elif counter > 2:
         print("You're really not that good at this, huh?")
+        print("That's {counter} guesses so far!")
         print("Here's a hint, it comes after 2!")
     else:
         print(f"You have taken {counter} guesses so far!")     
