@@ -2,7 +2,7 @@ print("Today's goal is to factor numbers")
 number = int(input("Enter a positive interger: "))
 
 def factored(number):
-    for n in range(1, number):
+    for n in range(1, number + 1):
         factorial = number % n
         if factorial == 0:
             print(f"{n} is a factor of {number}")
