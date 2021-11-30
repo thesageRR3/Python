@@ -30,4 +30,4 @@ while guess != 3:
     else:
         print(f"You have taken {counter} guesses so far!")     
     guess = int(input("Please enter your guess: "))
-    am_I_right(guess) 
+    am_I_right(guess)
