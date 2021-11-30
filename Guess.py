@@ -24,8 +24,8 @@ while guess != 3:
     if counter == 1:
         print(f"You have taken {counter} guess so far!")
     elif counter > 2:
-        print("You're really not that good at this, huh?")
         print("That's {counter} guesses so far!")
+        print("You're really not that good at this, huh?")
         print("Here's a hint, it comes after 2!")
     else:
         print(f"You have taken {counter} guesses so far!")     
