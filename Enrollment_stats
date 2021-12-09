@@ -1,0 +1,65 @@
+def enrollment_stats(univ_list):
+    member_schools = []
+    total_students = []
+    total_tuition = []
+    for i in univ_list:        
+        member_schools.append(i[0])
+        total_students.append(i[1])
+        total_tuition.append(i[2])
+    return member_schools, total_students, total_tuition
+
+def mean(values):
+    return sum(values) / len(values)
+
+def median(values):
+    values.sort()
+    if len(values) % 2 == 1:
+        center_index = int(len(values) // 2)
+        return values[center_index]
+    else:
+        l_center_index = (len(values) - 1)  // 2
+        r_center_index = (len(values) + 1)  // 2
+        return mean ([values[l_center_index], values[r_center_index]])
+
+#univ list can be imported from csv or scraped
+univ_list = [
+['California Institute of Technology', 2175, 37704],
+['Harvard', 19627, 39849],
+['Massachusetts Institute of Technology', 10566, 40732],
+['Princeton', 7802, 37000],
+['Rice', 5879, 35551],
+['Stanford', 19535, 40569],
+['Yale', 11701, 40500],
+['Univ of Dayton', 8644, 44890]
+]
+
+#Turn on/ off sorting options by removing #
+#Sort by alphabetical 
+univ_list = sorted(univ_list, key = lambda school: school[0], reverse = False)
+#Sort by school size HI to Low
+#univ_list = sorted(univ_list, key = lambda size: size[1], reverse = False)
+#Sort by tuition HI to Low
+#univ_list = sorted(univ_list, key = lambda tuition: tuition[2], reverse = True)
+
+results = enrollment_stats(univ_list)
+
+print(f"The function enrollment_stats() has returned a {type(results)}")
+print(f"It is a master list, w/ {len(results)} sublists.")
+print(f"Each sublist has {len(results[0])} total items.")
+print(f"The compiled data displays (school name/ school pop/ current tuition):")
+
+row = 1
+for school_info in zip(results[0], results[1], results[2]):
+    print(f" Row {row}. {school_info}")
+    row += 1
+
+student_mean = round(mean(results[1]))
+student_median = round(median(results[1]))
+
+print("\n")
+print(f"Total students: {sum(results[1]):,}")
+print(f"Total tuition: ${sum(results[2]):,.2f}")
+print(f"\nMean student size: {student_mean:,}")
+print(f"Median student size: {student_median:,}")
+print(f"\nMean tuition: ${mean(results[2]):,.2f}")
+print(f"Median tuition: ${median(results[2]):,.2f}")
